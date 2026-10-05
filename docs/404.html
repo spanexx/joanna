@@ -7,10 +7,10 @@
     <meta name="robots" content="noindex" />
     <meta
       http-equiv="refresh"
-      content="0; url=/"
+      content="0; url=/joanna/"
     />
-    <link rel="canonical" href="/" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="/joanna/" />
+    <link rel="icon" href="/joanna/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <!--
@@ -19,16 +19,18 @@
       bounce to the root and let the Angular router resolve the path from
       location.pathname instead.
     -->
-    <p>Przekierowanie… <a href="/">Wróć na stronę główną</a></p>
+    <p>Przekierowanie… <a href="/joanna/">Wróć na stronę główną</a></p>
     <script>
       // Preserve deep links: stash the path, then land on the app root.
-      var p = window.location.pathname + window.location.search;
-      if (p && p !== '/') {
+      var BASE = '/joanna/';
+      var full = window.location.pathname + window.location.search;
+      var p = full.indexOf(BASE) === 0 ? '/' + full.slice(BASE.length) : full;
+      if (p && p !== '/' && p.indexOf('/joanna') !== 0) {
         try {
           sessionStorage.setItem('jo:redirect', p);
         } catch (e) {}
       }
-      window.location.replace('/');
+      window.location.replace('/joanna/');
     </script>
   </body>
 </html>
