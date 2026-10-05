@@ -1,0 +1,57 @@
+# ============================================================
+#  Everything is ignored by default. The ONLY thing committed is
+#  the built site in /docs, which GitHub Pages serves.
+# ============================================================
+
+# --- ignore everything ---
+*
+!.gitignore
+!README.md
+!docs/
+
+# docs is committed, but its build internals must not be
+docs/*
+!docs/index.html
+!docs/404.html
+!docs/favicon.svg
+!docs/*.js
+!docs/*.css
+!docs/clients/
+!docs/joanna-photo.jpg
+
+# --- belt & braces: never track these even inside docs ---
+docs/**/node_modules/
+docs/**/.angular/
+docs/**/*.map
+docs/**/.vite/
+docs/**/tsconfig*
+docs/**/.gitignore
+
+# --- deps & build caches (should never be reachable) ---
+node_modules/
+web/node_modules/
+web/.angular/
+web/dist/
+web/out-tsc/
+web/coverage/
+web/*.tsbuildinfo
+
+# --- tooling output ---
+tools/shots/
+tools/slices/
+tools/parity.json
+tools/*.log
+tools/_user.png
+
+# --- editors / OS / secrets ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.env
+.env.local
+*.log

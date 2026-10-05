@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Joanna Obrębska · L&D Partner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta
+      http-equiv="refresh"
+      content="0; url=/"
+    />
+    <link rel="canonical" href="/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!--
+      GitHub Pages serves this for any path it cannot resolve (e.g. /blog,
+      /oferta/lider-w-zmianie). Pages does not rewrite to index.html, so we
+      bounce to the root and let the Angular router resolve the path from
+      location.pathname instead.
+    -->
+    <p>Przekierowanie… <a href="/">Wróć na stronę główną</a></p>
+    <script>
+      // Preserve deep links: stash the path, then land on the app root.
+      var p = window.location.pathname + window.location.search;
+      if (p && p !== '/') {
+        try {
+          sessionStorage.setItem('jo:redirect', p);
+        } catch (e) {}
+      }
+      window.location.replace('/');
+    </script>
+  </body>
+</html>
