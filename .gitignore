@@ -1,33 +1,30 @@
 # ============================================================
-#  Everything is ignored by default. The ONLY thing committed is
-#  the built site in /docs, which GitHub Pages serves.
+#  Only the built site in /docs is committed — that is what GitHub
+#  Pages serves. Everything else (source, deps, tooling) is ignored.
 # ============================================================
 
-# --- ignore everything ---
+# --- ignore everything, then whitelist only /docs ---
 *
 !.gitignore
 !README.md
 !docs/
+# git does not descend into an excluded directory, so re-include it first
+!docs/**
 
-# docs is committed, but its build internals must not be
-docs/*
+# docs/ contents: only the deployable output
 !docs/index.html
 !docs/404.html
+!docs/.nojekyll
 !docs/favicon.svg
+!docs/joanna-photo.jpg
 !docs/*.js
 !docs/*.css
-!docs/clients/
-!docs/joanna-photo.jpg
-
-# --- belt & braces: never track these even inside docs ---
-docs/**/node_modules/
-docs/**/.angular/
+!docs/clients/**
+# never ship source maps or TS sources to Pages
 docs/**/*.map
-docs/**/.vite/
-docs/**/tsconfig*
-docs/**/.gitignore
+docs/**/*.ts
 
-# --- deps & build caches (should never be reachable) ---
+# --- deps, build caches, tooling output ---
 node_modules/
 web/node_modules/
 web/.angular/
@@ -35,13 +32,10 @@ web/dist/
 web/out-tsc/
 web/coverage/
 web/*.tsbuildinfo
-
-# --- tooling output ---
 tools/shots/
 tools/slices/
 tools/parity.json
 tools/*.log
-tools/_user.png
 
 # --- editors / OS / secrets ---
 .DS_Store
